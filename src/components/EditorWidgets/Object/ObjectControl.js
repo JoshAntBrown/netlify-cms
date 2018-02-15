@@ -68,6 +68,16 @@ export default class ObjectControl extends Component {
     if (field.get('widget') === 'hidden') {
       return null;
     }
+
+    const condition = field.get('condition');
+    if (condition) {
+      const conditionField = condition.get('field');
+      const requiredValue = condition.get('value');
+      const conditionValue = value && Map.isMap(value) ? value.get(conditionField) : null;
+
+      if (requiredValue !== conditionValue) return null;
+    }
+    
     const widgetName = field.get('widget') || 'string';
     const widget = resolveWidget(widgetName);
     const fieldName = field.get('name');
