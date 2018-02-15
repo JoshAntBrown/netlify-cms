@@ -18,6 +18,29 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD hh:mma"}
       - {label: "Cover Image", name: "image", widget: "image", required: false, tagname: ""}
       - {label: "Body", name: "body", widget: "markdown"}
+      - label: Sections
+        name: sections
+        widget: flexible-layout
+        fields:
+          - label: Generic Section
+            name: generic-section
+            widget: object
+            fields:
+              - label: Title
+                name: title
+              - label: Content
+                name: content
+                widget: markdown
+          - label: Team Section
+            name: team-section
+            widget: object
+            fields:
+              - label: People
+                name: people
+                widget: list
+                fields:
+                  - label: Name
+                    name: name
     meta:
       - {label: "SEO Description", name: "description", widget: "text"}
 
